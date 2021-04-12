@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DayNineNews</title>
+	<style>
+		.title {
+			display: grid;
+			place-items: center;
+		}
+
+		.orderby {
+			text-align: center;
+		}
+
+		.info {
+			display: grid;
+			padding-left: 100px;
+			grid-auto-rows: minmax(100px, auto);
+			gap: 20px;
+		}
+
+		.center {
+			width: 90%;
+			text-align: left;
+			border-bottom: 2px solid purple;
+		}
+	</style>
+	<link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+	</link>
+</head>
+
+<body>
+	<h1 class='title'>Nomad News</h1>
+	<h4 class='orderby'>orderby: <a href="/?order_by=popular">Popular</a> | <a href="/?order_by=new">New</a></h4>
+	<div class='info'>
+		{% for key, value in datas.items() %}
+		<div class='center'>
+			<a href="/data?id={{key}}">{{value['title']}}</a>
+			(<a href={{value[ 'url']}}>{{value['url']}}</a>) <br>
+        {{value['point']}} points | By: {{value['author']}} | comment: {{value['num_comment']}}
+      </div> 
+    {% endfor %}
+  </div>
+</body>
+
+</html>

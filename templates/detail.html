@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+	</link>
+	<style>
+		.title {
+			display: grid;
+			place-items: center;
+		}
+
+		.orderby {
+			text-align: center;
+		}
+
+		.info {
+			display: grid;
+			padding-left: 100px;
+			grid-auto-rows: minmax(100px, auto);
+			gap: 20px;
+		}
+
+		.center {
+			width: 90%;
+			text-align: left;
+			border-bottom: 2px solid purple;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class='title'>{{datas['title']}}</h1>
+	<h4 class='orderby'>
+		points: {{datas['point']}} | By: {{datas['author']}} | <a href="{{datas['url']}}">{{datas['url']}}</a>
+	</h4>
+	<div class='info'>
+		{%if datas['comment']%} {% for data in datas['comment'] %}
+		<div class='center'>
+			{%if data['author']%}
+			<strong>{{data['author']}}:</strong> <br>
+            {{data['text']|safe}}
+          {%else%}
+            <strong>[Deleted]</strong>
+          {%endif%}
+        </div> 
+      {% endfor %}
+    {%endif%}
+  </div>
+</body>
+
+</html>
